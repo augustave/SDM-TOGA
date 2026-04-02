@@ -1,0 +1,123 @@
+flight_telemetry_logs:
+  - event_id: "01_cruise_weather_entry"
+    timestamp: "02:08:17"
+    description: "Aircraft entering heavy ice crystal precipitation in the ITCZ."
+    flight_law: "Normal"
+    autopilot_status: "ON"
+    autothrust_status: "ON"
+    indicated_airspeed_left_kts: 275
+    indicated_airspeed_standby_kts: 275
+    indicated_airspeed_right_kts: 275
+    mach_number: 0.80
+    altitude_ft: 35000
+    vertical_speed_fpm: 0
+    pitch_attitude_deg: 2.5
+    bank_angle_deg: 0
+    engine_thrust_n1_percent: 84
+    active_audio_warnings: "None"
+    active_ecam_warnings: []
+
+  - event_id: "02_pitot_failure_startle"
+    timestamp: "02:10:05"
+    description: "Ice clogs pitot tubes. AP/ATHR disconnect. Protections lost."
+    flight_law: "Alternate_Law_2"
+    autopilot_status: "OFF"
+    autothrust_status: "OFF_THRUST_LOCK"
+    indicated_airspeed_left_kts: 60  # Erroneous reading
+    indicated_airspeed_standby_kts: 60 # Erroneous reading
+    indicated_airspeed_right_kts: "INVALID_DATA"
+    mach_number: "INVALID_DATA"
+    altitude_ft: 34700 # Altimeter recalculation error
+    vertical_speed_fpm: -300
+    pitch_attitude_deg: 2.5
+    bank_angle_deg: 8 # Right bank developing from gust
+    engine_thrust_n1_percent: 84
+    active_audio_warnings: 
+      - "Cavalry Charge (AP Disconnect)"
+      - "Brief STALL warning"
+    active_ecam_warnings: 
+      - "AUTO FLT AP OFF"
+      - "AUTO FLT A/THR OFF"
+      - "F/CTL ALTN LAW (PROT LOST)"
+      - "NAV ADR DISAGREE"
+
+  - event_id: "03_zoom_climb"
+    timestamp: "02:10:26"
+    description: "Pilot flying commands severe pitch up. Aircraft trading speed for altitude."
+    flight_law: "Alternate_Law_2"
+    autopilot_status: "OFF"
+    autothrust_status: "OFF_CLIMB_LATCHED"
+    indicated_airspeed_left_kts: "INVALID_DATA"
+    indicated_airspeed_standby_kts: "INVALID_DATA"
+    indicated_airspeed_right_kts: "INVALID_DATA"
+    mach_number: "INVALID_DATA"
+    altitude_ft: 36000
+    vertical_speed_fpm: 6900
+    pitch_attitude_deg: 12.0
+    bank_angle_deg: -5 # Oscillating left/right
+    engine_thrust_n1_percent: 100 # Climb thrust
+    active_audio_warnings: 
+      - "C-Chord (Altitude Deviation)"
+    active_ecam_warnings: 
+      - "10+ Warning Messages Displayed"
+
+  - event_id: "04_apogee_and_stall"
+    timestamp: "02:10:57"
+    description: "Aircraft reaches maximum altitude. Fully developed aerodynamic stall begins."
+    flight_law: "Alternate_Law_2"
+    autopilot_status: "OFF"
+    autothrust_status: "OFF_TOGA"
+    indicated_airspeed_left_kts: 183 # Pitots thawed, reading true low speed
+    indicated_airspeed_standby_kts: 183
+    indicated_airspeed_right_kts: 183
+    mach_number: 0.53
+    altitude_ft: 37924
+    vertical_speed_fpm: 0
+    pitch_attitude_deg: 16.0
+    bank_angle_deg: 12
+    engine_thrust_n1_percent: 104 # TOGA
+    active_audio_warnings: 
+      - "Continuous STALL warning"
+    active_ecam_warnings: 
+      - "10+ Warning Messages Displayed"
+
+  - event_id: "05_deep_stall_descent"
+    timestamp: "02:11:42"
+    description: "Aircraft falling flat. Extreme Angle of Attack causes airspeed to read invalid, silencing stall warning."
+    flight_law: "Alternate_Law_2"
+    autopilot_status: "OFF"
+    autothrust_status: "OFF_IDLE_COMMANDED"
+    indicated_airspeed_left_kts: 29 # Below 30kts threshold, UI shows red SPD flag
+    indicated_airspeed_standby_kts: 29
+    indicated_airspeed_right_kts: 29
+    mach_number: "INVALID_DATA"
+    altitude_ft: 35000
+    vertical_speed_fpm: -10000
+    pitch_attitude_deg: 15.0
+    bank_angle_deg: 30
+    engine_thrust_n1_percent: 45 # Idle
+    active_audio_warnings: "None" # Silence due to invalid airspeed logic
+    active_ecam_warnings: 
+      - "10+ Warning Messages Displayed"
+
+  - event_id: "06_impact"
+    timestamp: "02:14:28"
+    description: "Aircraft impacts the ocean surface."
+    flight_law: "Alternate_Law_2"
+    autopilot_status: "OFF"
+    autothrust_status: "OFF_TOGA"
+    indicated_airspeed_left_kts: 107
+    indicated_airspeed_standby_kts: 107
+    indicated_airspeed_right_kts: 107
+    mach_number: "INVALID_DATA"
+    altitude_ft: 0
+    vertical_speed_fpm: -10900
+    pitch_attitude_deg: 16.0
+    bank_angle_deg: -5
+    engine_thrust_n1_percent: 104 # TOGA
+    active_audio_warnings: 
+      - "Continuous STALL warning"
+      - "GPWS: SINK RATE, PULL UP"
+      - "DUAL INPUT"
+    active_ecam_warnings: 
+      - "10+ Warning Messages Displayed"
