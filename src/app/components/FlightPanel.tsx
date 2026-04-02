@@ -16,6 +16,9 @@ export function FlightPanel({ yokeRoll = 0, yokePitch = 0 }: FlightPanelProps) {
   const utcH = time.getUTCHours().toString().padStart(2, "0");
   const utcM = time.getUTCMinutes().toString().padStart(2, "0");
   const utcS = time.getUTCSeconds().toString().padStart(2, "0");
+  const aircraftPitch = -yokePitch;
+  const ghostRollDeg = yokeRoll * 10;
+  const ghostOffsetY = -aircraftPitch * 6;
 
   const rows = [
     { label: "FLT", value: "AFR1842" },
@@ -77,6 +80,32 @@ export function FlightPanel({ yokeRoll = 0, yokePitch = 0 }: FlightPanelProps) {
         </div>
         <div className="border border-[#BEBEB8] bg-[#E2E2DF] p-3">
           <svg viewBox="0 0 200 120" className="w-full">
+            {/* Faint response ghost so the aircraft mirrors the sidestick input */}
+            <g
+              transform={`translate(100 ${60 + ghostOffsetY}) rotate(${ghostRollDeg}) translate(-100 -60)`}
+              opacity="0.25"
+            >
+              <line x1="100" y1="10" x2="100" y2="110" stroke="#4A4A46" strokeWidth="0.75" />
+              <ellipse cx="100" cy="15" rx="4" ry="8" fill="none" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="96" y1="15" x2="96" y2="95" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="104" y1="15" x2="104" y2="95" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="96" y1="95" x2="92" y2="110" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="104" y1="95" x2="108" y2="110" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="92" y1="110" x2="108" y2="110" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="96" y1="50" x2="20" y2="58" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="104" y1="50" x2="180" y2="58" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="20" y1="58" x2="30" y2="68" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="180" y1="58" x2="170" y2="68" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="30" y1="68" x2="96" y2="60" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="170" y1="68" x2="104" y2="60" stroke="#4A4A46" strokeWidth="0.75" />
+              <line x1="92" y1="100" x2="70" y2="104" stroke="#4A4A46" strokeWidth="0.5" />
+              <line x1="108" y1="100" x2="130" y2="104" stroke="#4A4A46" strokeWidth="0.5" />
+              <line x1="70" y1="104" x2="75" y2="108" stroke="#4A4A46" strokeWidth="0.5" />
+              <line x1="130" y1="104" x2="125" y2="108" stroke="#4A4A46" strokeWidth="0.5" />
+              <line x1="75" y1="108" x2="92" y2="105" stroke="#4A4A46" strokeWidth="0.5" />
+              <line x1="125" y1="108" x2="108" y2="105" stroke="#4A4A46" strokeWidth="0.5" />
+            </g>
+
             {/* Aircraft outline - top view */}
             {/* Fuselage */}
             <line x1="100" y1="10" x2="100" y2="110" stroke="#BEBEB8" strokeWidth="0.5" />
