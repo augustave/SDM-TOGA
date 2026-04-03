@@ -1,4 +1,5 @@
 # A320 Flight Control Interface
+AF447 DEMO
 
 An interactive aviation cockpit UI and FDR telemetry replay system built with React, Vite, Tailwind CSS v4, and Motion. The app reconstructs a six-event flight sequence through live instruments, a functional Airbus MCDU, a sidestick input, and a replay timeline framed as an austere institutional document.
 
